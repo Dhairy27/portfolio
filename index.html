@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="style.v2.css">
+  <link rel="stylesheet" href="style.v3.css">
 </head>
 <body>
 
@@ -79,26 +79,26 @@
         </button>
       </div>
     </div>
-  </header>
 
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-    <nav class="mobile-links" aria-label="Mobile Navigation">
-      <a href="#about" class="mobile-link" id="mob-link-about">About</a>
-      <a href="#skills" class="mobile-link" id="mob-link-skills">Skills</a>
-      <a href="#education" class="mobile-link" id="mob-link-education">Education</a>
-      <a href="#projects" class="mobile-link" id="mob-link-projects">Projects</a>
-      <a href="#certificates" class="mobile-link" id="mob-link-certificates">Certifications</a>
-      <a href="#contact" class="mobile-link mob-btn" id="mob-link-contact">Hire Me</a>
-      
-      <!-- Mobile Theme Toggle -->
-      <button class="theme-toggle-btn mobile-theme-btn" id="theme-toggle-mobile" aria-label="Toggle light/dark theme" title="Toggle Theme" style="display: inline-flex; align-items: center; background: none; border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 50px; cursor: pointer; color: var(--text-primary); margin-top: 10px;">
-        <span class="mobile-theme-text" style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-right: 12px;">Theme Mode</span>
-        <i data-lucide="moon" class="theme-icon-dark" id="theme-icon-dark-mob"></i>
-        <i data-lucide="sun" class="theme-icon-light" id="theme-icon-light-mob"></i>
-      </button>
-    </nav>
-  </div>
+    <!-- Mobile Drawer Menu (nested inside header for absolute positioning relative to header) -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <nav class="mobile-links" aria-label="Mobile Navigation">
+        <a href="#about" class="mobile-link" id="mob-link-about">About</a>
+        <a href="#skills" class="mobile-link" id="mob-link-skills">Skills</a>
+        <a href="#education" class="mobile-link" id="mob-link-education">Education</a>
+        <a href="#projects" class="mobile-link" id="mob-link-projects">Projects</a>
+        <a href="#certificates" class="mobile-link" id="mob-link-certificates">Certifications</a>
+        <a href="#contact" class="mobile-link mob-btn" id="mob-link-contact">Hire Me</a>
+        
+        <!-- Mobile Theme Toggle -->
+        <button class="theme-toggle-btn mobile-theme-btn" id="theme-toggle-mobile" aria-label="Toggle light/dark theme" title="Toggle Theme" style="display: inline-flex; align-items: center; background: none; border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 50px; cursor: pointer; color: var(--text-primary); margin-top: 10px;">
+          <span class="mobile-theme-text" style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-right: 12px;">Theme Mode</span>
+          <i data-lucide="moon" class="theme-icon-dark" id="theme-icon-dark-mob"></i>
+          <i data-lucide="sun" class="theme-icon-light" id="theme-icon-light-mob"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
 
   <!-- Main Content Wrapper -->
   <main>
@@ -697,6 +697,6 @@
   <!-- Lucide Icons Library Injection -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- Main Javascript Logic -->
-  <script src="script.v2.js"></script>
+  <script src="script.v3.js"></script>
 </body>
 </html>
