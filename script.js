@@ -358,10 +358,13 @@ function initCertificateLightbox() {
   };
 
   zoomBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
       const src = btn.getAttribute('data-src');
       const title = btn.getAttribute('data-title');
-      openLightbox(src, title);
+      if (src) {
+        e.preventDefault();
+        openLightbox(src, title);
+      }
     });
   });
 
