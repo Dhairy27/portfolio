@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
    THEME MANAGER (DARK / LIGHT)
    ========================================================================== */
 function initTheme() {
-  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
   const htmlElement = document.documentElement;
 
   // Retrieve saved preference or default to system preference
@@ -51,13 +51,15 @@ function initTheme() {
     localStorage.setItem('theme', defaultTheme);
   }
 
-  // Event Listener
-  themeToggleBtn.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+  // Event Listener for all theme toggle buttons (header and mobile drawer)
+  themeToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
   });
 }
 
@@ -389,6 +391,9 @@ function initCertificateLightbox() {
    CONTACT FORM HANDLING (VALIDATION & SIMULATION)
    ========================================================================== */
 function initContactForm() {
+  // To receive emails, create a free form at https://formspree.io/ and enter your Form ID here:
+  const FORMSPREE_FORM_ID = 'mkoepkpp'; 
+
   const form = document.getElementById('contact-form');
   if (!form) return;
 
@@ -451,29 +456,78 @@ function initContactForm() {
       lucide.createIcons();
     }
 
-    // Simulate Server Request (e.g. Vercel Serverless Function or Formspree)
-    setTimeout(() => {
-      // Revert submit button styling
-      submitBtn.classList.remove('loading');
-      submitBtnText.textContent = 'Send Message';
-      submitBtnIcon.innerHTML = '<i data-lucide="send"></i>';
-      lucide.createIcons();
-
-      // Show Success State Feedback
-      feedbackBox.classList.remove('hidden', 'error');
-      feedbackMessage.textContent = 'Message sent! I\'ll get back to you shortly.';
-      feedbackIcon.innerHTML = '<i data-lucide="check-circle-2"></i>';
-      lucide.createIcons();
-
-      // Reset form
-      form.reset();
-
-      // Auto-hide feedback block after 5s
+    // Submit Form to Formspree (or simulate if no ID is configured)
+    const formspreeEndpoint = `https://formspree.io/f/${FORMSPREE_FORM_ID}`;
+    
+    if (FORMSPREE_FORM_ID === 'YOUR_FORMSPREE_FORM_ID' || !FORMSPREE_FORM_ID) {
+      // Simulation mode
       setTimeout(() => {
-        feedbackBox.classList.add('hidden');
-      }, 5000);
+        submitBtn.classList.remove('loading');
+        submitBtnText.textContent = 'Send Message';
+        submitBtnIcon.innerHTML = '<i data-lucide="send"></i>';
+        lucide.createIcons();
 
-    }, 1800);
+        feedbackBox.classList.remove('hidden', 'error');
+        feedbackMessage.textContent = 'Demo Mode: Message sent! (Configure FORMSPREE_FORM_ID in script.js to receive real emails at dhairy7879@gmail.com)';
+        feedbackIcon.innerHTML = '<i data-lucide="check-circle-2"></i>';
+        lucide.createIcons();
+
+        form.reset();
+
+        setTimeout(() => {
+          feedbackBox.classList.add('hidden');
+        }, 8000);
+      }, 1500);
+    } else {
+      // Real submission mode
+      fetch(formspreeEndpoint, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        submitBtn.classList.remove('loading');
+        submitBtnText.textContent = 'Send Message';
+        submitBtnIcon.innerHTML = '<i data-lucide="send"></i>';
+        lucide.createIcons();
+
+        if (response.ok) {
+          feedbackBox.classList.remove('hidden', 'error');
+          feedbackMessage.textContent = 'Thank you! Your message was sent successfully.';
+          feedbackIcon.innerHTML = '<i data-lucide="check-circle-2"></i>';
+          lucide.createIcons();
+          form.reset();
+        } else {
+          feedbackBox.classList.remove('hidden');
+          feedbackBox.classList.add('error');
+          feedbackMessage.textContent = 'Oops! There was a problem sending your message.';
+          feedbackIcon.innerHTML = '<i data-lucide="alert-circle"></i>';
+          lucide.createIcons();
+        }
+
+        setTimeout(() => {
+          feedbackBox.classList.add('hidden');
+        }, 5000);
+      })
+      .catch(error => {
+        submitBtn.classList.remove('loading');
+        submitBtnText.textContent = 'Send Message';
+        submitBtnIcon.innerHTML = '<i data-lucide="send"></i>';
+        lucide.createIcons();
+
+        feedbackBox.classList.remove('hidden');
+        feedbackBox.classList.add('error');
+        feedbackMessage.textContent = 'Oops! There was a network error sending your message.';
+        feedbackIcon.innerHTML = '<i data-lucide="alert-circle"></i>';
+        lucide.createIcons();
+
+        setTimeout(() => {
+          feedbackBox.classList.add('hidden');
+        }, 5000);
+      });
+    }
   });
 }
 

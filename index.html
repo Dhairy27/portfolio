@@ -90,6 +90,13 @@
       <a href="#projects" class="mobile-link" id="mob-link-projects">Projects</a>
       <a href="#certificates" class="mobile-link" id="mob-link-certificates">Certifications</a>
       <a href="#contact" class="mobile-link mob-btn" id="mob-link-contact">Hire Me</a>
+      
+      <!-- Mobile Theme Toggle -->
+      <button class="theme-toggle-btn mobile-theme-btn" id="theme-toggle-mobile" aria-label="Toggle light/dark theme" title="Toggle Theme" style="display: inline-flex; align-items: center; background: none; border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 50px; cursor: pointer; color: var(--text-primary); margin-top: 10px;">
+        <span class="mobile-theme-text" style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 600; margin-right: 12px;">Theme Mode</span>
+        <i data-lucide="moon" class="theme-icon-dark" id="theme-icon-dark-mob"></i>
+        <i data-lucide="sun" class="theme-icon-light" id="theme-icon-light-mob"></i>
+      </button>
     </nav>
   </div>
 
@@ -526,24 +533,28 @@
           <p class="section-subtitle">Verified professional achievements and specializations.</p>
         </div>
 
-        <div class="certificates-grid" style="display: flex; justify-content: center; max-width: 600px; margin: 0 auto; width: 100%;">
+        <div class="certificates-grid" style="display: flex; justify-content: center; max-width: 500px; margin: 0 auto; width: 100%;">
           <!-- Cert Card 1 -->
-          <div class="cert-card scroll-reveal" id="cert-card-1" style="width: 100%;">
-            <div class="cert-img-container">
-              <img src="./assets/cert1.png" alt="Python Essentials 1 Certificate" class="cert-thumbnail">
+          <div class="project-card scroll-reveal" id="cert-card-1" style="width: 100%;">
+            <div class="project-img-wrapper">
+              <img src="./assets/cert1.png" alt="Python Essentials 1 Certificate">
             </div>
-            <div class="cert-details">
-              <div>
-                <div class="cert-meta">
-                  <span class="cert-issuer">Cisco Networking Academy & OpenEDG Python Institute</span>
-                  <span class="cert-date">May 2026</span>
-                </div>
-                <h3 class="cert-title">Python Essentials 1</h3>
-                <p class="cert-id">Credential Type: <span class="text-accent">Statement of Achievement</span></p>
+            <div class="project-info">
+              <span class="project-category text-accent">Certification</span>
+              <h3 class="project-title">Python Essentials 1</h3>
+              <p class="project-desc">
+                Credential earned from Cisco Networking Academy in collaboration with OpenEDG Python Institute. Student-level statement of achievement.
+              </p>
+              <div class="project-tech-tags" style="margin-bottom: 20px;">
+                <span class="tech-tag">Python 3</span>
+                <span class="tech-tag">Cisco Academy</span>
+                <span class="tech-tag">OpenEDG</span>
               </div>
-              <a href="./PythonEssentials1Update20260526-30-2erjs5.pdf" target="_blank" rel="noopener noreferrer" class="cert-zoom-btn" aria-label="View official certificate PDF">
-                <i data-lucide="external-link"></i> View Certificate
-              </a>
+              <div class="project-card-actions">
+                <a href="./PythonEssentials1Update20260526-30-2erjs5.pdf" target="_blank" rel="noopener noreferrer" class="btn-project-action primary">
+                  <i data-lucide="external-link"></i> View Certificate
+                </a>
+              </div>
             </div>
           </div>
         </div>
