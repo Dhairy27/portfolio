@@ -1932,6 +1932,10 @@ ul {
     display: flex;
   }
 
+  .scroll-down-indicator {
+    display: none;
+  }
+
 
 
   .section-container {
