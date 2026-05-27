@@ -70,8 +70,6 @@ function initNav() {
   const header = document.getElementById('main-header');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
-  const menuIconOpen = document.getElementById('menu-icon-open');
-  const menuIconClose = document.getElementById('menu-icon-close');
   const desktopLinks = document.querySelectorAll('.nav-link:not(.nav-btn)');
   const mobileLinks = document.querySelectorAll('.mobile-link');
   const sections = document.querySelectorAll('section');
@@ -90,16 +88,14 @@ function initNav() {
     const isOpen = mobileNav.classList.contains('open');
     if (isOpen) {
       mobileNav.classList.remove('open');
+      mobileMenuToggle.classList.remove('active');
       mobileMenuToggle.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
-      menuIconOpen.classList.remove('hidden');
-      menuIconClose.classList.add('hidden');
     } else {
       mobileNav.classList.add('open');
+      mobileMenuToggle.classList.add('active');
       mobileMenuToggle.setAttribute('aria-expanded', 'true');
       mobileNav.setAttribute('aria-hidden', 'false');
-      menuIconOpen.classList.add('hidden');
-      menuIconClose.classList.remove('hidden');
     }
   };
 
