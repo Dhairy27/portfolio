@@ -465,12 +465,16 @@ function initContactForm() {
         submitBtn.classList.remove('loading');
         submitBtnText.textContent = 'Send Message';
         submitBtnIcon.innerHTML = '<i data-lucide="send"></i>';
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
 
         feedbackBox.classList.remove('hidden', 'error');
         feedbackMessage.textContent = 'Demo Mode: Message sent! (Configure FORMSPREE_FORM_ID in script.js to receive real emails at dhairy7879@gmail.com)';
         feedbackIcon.innerHTML = '<i data-lucide="check-circle-2"></i>';
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
 
         form.reset();
 
@@ -491,20 +495,26 @@ function initContactForm() {
         submitBtn.classList.remove('loading');
         submitBtnText.textContent = 'Send Message';
         submitBtnIcon.innerHTML = '<i data-lucide="send"></i>';
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
 
         if (response.ok) {
           feedbackBox.classList.remove('hidden', 'error');
           feedbackMessage.textContent = 'Thank you! Your message was sent successfully.';
           feedbackIcon.innerHTML = '<i data-lucide="check-circle-2"></i>';
-          lucide.createIcons();
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+          }
           form.reset();
         } else {
           feedbackBox.classList.remove('hidden');
           feedbackBox.classList.add('error');
           feedbackMessage.textContent = 'Oops! There was a problem sending your message.';
           feedbackIcon.innerHTML = '<i data-lucide="alert-circle"></i>';
-          lucide.createIcons();
+          if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+          }
         }
 
         setTimeout(() => {
@@ -515,13 +525,17 @@ function initContactForm() {
         submitBtn.classList.remove('loading');
         submitBtnText.textContent = 'Send Message';
         submitBtnIcon.innerHTML = '<i data-lucide="send"></i>';
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
 
         feedbackBox.classList.remove('hidden');
         feedbackBox.classList.add('error');
         feedbackMessage.textContent = 'Oops! There was a network error sending your message.';
         feedbackIcon.innerHTML = '<i data-lucide="alert-circle"></i>';
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') {
+          lucide.createIcons();
+        }
 
         setTimeout(() => {
           feedbackBox.classList.add('hidden');
