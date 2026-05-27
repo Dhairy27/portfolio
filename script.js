@@ -94,14 +94,12 @@ function initNav() {
       mobileNav.setAttribute('aria-hidden', 'true');
       menuIconOpen.classList.remove('hidden');
       menuIconClose.classList.add('hidden');
-      document.body.style.overflow = '';
     } else {
       mobileNav.classList.add('open');
       mobileMenuToggle.setAttribute('aria-expanded', 'true');
       mobileNav.setAttribute('aria-hidden', 'false');
       menuIconOpen.classList.add('hidden');
       menuIconClose.classList.remove('hidden');
-      document.body.style.overflow = 'hidden'; // Prevent scroll while menu is open
     }
   };
 
@@ -114,6 +112,17 @@ function initNav() {
         toggleMobileMenu();
       }
     });
+  });
+
+  // Close Mobile Menu on Click Outside
+  document.addEventListener('click', (e) => {
+    if (mobileNav.classList.contains('open')) {
+      const clickedToggle = mobileMenuToggle.contains(e.target);
+      const clickedNav = mobileNav.contains(e.target);
+      if (!clickedToggle && !clickedNav) {
+        toggleMobileMenu();
+      }
+    }
   });
 
   // Active Link Observer

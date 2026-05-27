@@ -407,56 +407,67 @@ ul {
    MOBILE DRAWER NAVIGATION
    ========================================================================== */
 .mobile-nav {
-  position: fixed;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background: var(--bg-primary);
-  border-bottom: 0px solid var(--border-color);
+  position: absolute;
+  top: 100%;
+  left: 24px;
+  width: calc(100% - 48px);
+  max-width: 280px;
+  height: auto;
+  max-height: 80vh;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
   z-index: 99;
-  overflow: hidden;
-  transition: all 0.4s var(--transition-cubic);
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+  transition: transform 0.4s var(--transition-cubic), opacity 0.3s ease, visibility 0.3s ease;
+  transform: translateY(-20px);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
 .mobile-nav.open {
-  height: calc(100vh - 80px);
+  transform: translateY(0);
   opacity: 1;
   visibility: visible;
-  border-bottom: 1px solid var(--border-color);
+  pointer-events: auto;
 }
 
 .mobile-links {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  padding: 40px 24px;
-  height: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 24px;
 }
 
 .mobile-link {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--text-secondary);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  padding: 4px 0;
 }
 
 .mobile-link:hover {
   color: var(--accent);
+  transform: translateX(5px);
 }
 
 .mob-btn {
   border: 1px solid var(--accent);
   color: var(--accent);
-  padding: 10px 40px;
+  padding: 10px 24px;
   border-radius: 8px;
-  width: 80%;
+  width: 100%;
   text-align: center;
+  margin-top: 10px;
 }
 
 .mob-btn:hover {
@@ -1835,6 +1846,11 @@ ul {
 
   .hero-content {
     align-items: center;
+    order: 2;
+  }
+
+  .hero-visual {
+    order: 1;
   }
 
   .hero-description {
@@ -1884,13 +1900,7 @@ ul {
     display: none;
   }
 
-  .mobile-nav {
-    top: 66px !important;
-  }
 
-  .mobile-nav.open {
-    height: calc(100vh - 66px) !important;
-  }
 
   .section-container {
     padding: 60px 20px;
