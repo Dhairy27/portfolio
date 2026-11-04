@@ -158,10 +158,10 @@ function initTypingEffect() {
   if (!typingTextEl) return;
 
   const roles = [
+    'MERN Stack Developer',
     'Full Stack Developer',
-    'Web Developer',
-    'UI Designer',
-    'Problem Solver'
+    'React.js Developer',
+    'Junior Web Developer'
   ];
 
   let roleIndex = 0;
@@ -234,8 +234,10 @@ function initScrollAnimations() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const target = entry.target;
-        const targetVal = parseInt(target.getAttribute('data-target'), 10);
-        animateCounter(target, targetVal);
+        const targetAttr = target.getAttribute('data-target');
+        if (targetAttr && !isNaN(parseInt(targetAttr, 10))) {
+          animateCounter(target, parseInt(targetAttr, 10));
+        }
         observer.unobserve(target);
       }
     });
